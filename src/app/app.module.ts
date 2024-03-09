@@ -11,6 +11,11 @@ import { NewHospitalComponent } from './components/new-hospital/new-hospital.com
 import { PatientListComponent } from './components/patient-list/patient-list.component';
 import { RouterOutlet } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker'
 
 @NgModule({
   declarations: [
@@ -21,14 +26,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HospitalListComponent,
     NewHospitalComponent,
     PatientListComponent,
-    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterOutlet,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
