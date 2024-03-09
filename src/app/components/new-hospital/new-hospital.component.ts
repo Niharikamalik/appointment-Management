@@ -8,25 +8,31 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class NewHospitalComponent {
 
-  hospitalReg: FormGroup;
+  hospitalRegisteration: FormGroup;
+hospitalReg: any;
   constructor(
     public fb: FormBuilder,
 
   ) {
-     this.hospitalReg = this.fb.group({
+     this.hospitalRegisteration = this.fb.group({
        hospitalName: '',
        contact: '',
        hospitalEmail: '',
-       openingDate: '',
+       openingDate:'',
        ownerName: '',
        ownerContact: '',
-       OwnerEmail: '',
+       ownerEmail: '',
        city: '',
        password:'',
      });
   }
   OnSubmit() {
-    if()
+    if (this.hospitalRegisteration.valid) {
+      console.log('valid')
+    }
+    else {
+      console.log('invalid')
+    }
 
   }
 

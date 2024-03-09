@@ -1,5 +1,5 @@
 <div class="form-container">
-  <form [formGroup]="hospitalReg" (ngSubmit)="OnSubmit()">
+  <form [formGroup]="hospitalRegisteration" (ngSubmit)="OnSubmit()">
     <div mat-dialog-content class="emp-form">
       <div class="row">
         <mat-form-field appearance="outline" >
@@ -54,7 +54,7 @@
     </div>
 
     <div mat-dialog-actions class="row">
-      <button mat-raised-button color="primary" type="submit" disabled="hospitalReg.invalid">Submit</button>
+      <button mat-raised-button color="primary" type="submit" >Submit</button>
       <button mat-raised-button color="warn" type="button"> Cancel </button>
     </div>
   </form>
