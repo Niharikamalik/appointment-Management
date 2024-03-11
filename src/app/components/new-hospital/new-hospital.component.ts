@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { HospitalService } from 'src/app/services/hospital.service';
 
 @Component({
   selector: 'app-new-hospital',
@@ -9,8 +10,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class NewHospitalComponent {
 
   hospitalRegisteration: FormGroup;
-hospitalReg: any;
+  submitted: boolean = false;
   constructor(
+    private _hospitalService : HospitalService,
     public fb: FormBuilder,
 
   ) {
@@ -28,7 +30,13 @@ hospitalReg: any;
   }
   OnSubmit() {
     if (this.hospitalRegisteration.valid) {
-      console.log('valid')
+      this._hospitalService.addHospital(this.hospitalRegisteration.value).subscribe({
+        next: (res) => {
+          console.log('submitted successfully', res)
+          this.hospitalRegisteration.reset()
+          this.submitted = true
+       }
+     })
     }
     else {
       console.log('invalid')

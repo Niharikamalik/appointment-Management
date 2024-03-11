@@ -2,8 +2,12 @@
   display: flex;
   justify-content: space-between;
   padding: 20px;
-  background-color: rgb(88, 140, 218);
-
+  background-color: rgb(107, 162, 245);
+  width: 100%;
+}
+mat-toolbar {
+  justify-content: space-between;
+  background-color: rgb(132, 172, 245);
 }
 .register-container{
   display: flex;
