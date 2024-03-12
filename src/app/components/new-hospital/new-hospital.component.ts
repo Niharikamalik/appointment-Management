@@ -15,7 +15,6 @@ export class NewHospitalComponent {
   constructor(
     private _hospitalService : HospitalService,
     public fb: FormBuilder,
-
   ) {
      this.hospitalRegisteration = this.fb.group({
        hospitalName: '',
@@ -33,12 +32,15 @@ export class NewHospitalComponent {
   val: boolean = false;
 OnSubmit() {
 
-  if (this.hospitalRegisteration.valid ) {
-      this._hospitalService.checkForRegister(this.hospitalRegisteration.value.hospitalName).subscribe(result => {
+  if (this.hospitalRegisteration.valid) {
+// check hospital in database
+    this._hospitalService.checkForRegister(this.hospitalRegisteration.value.hospitalName).subscribe(result => {
+        // if user already present
         if(result) {
           alert('already register')
           this.hospitalRegisteration.reset()
         }
+      // if not create new user
         else {
           this._hospitalService.addHospital(this.hospitalRegisteration.value).subscribe({
             next: (res) => {

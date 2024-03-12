@@ -11,19 +11,22 @@ import { User } from '../interface/login';
   providedIn: 'root',
 })
 export class HospitalService {
-  constructor(private _http: HttpClient) {}
+  constructor(private _http: HttpClient) { }
 
+  // add new hospital
   addHospital(data: hospital): Observable<hospital> {
     return this._http.post<hospital>(environment.api_url + Constant.API_END_POINT.ADD_NEW_HOSPITAL+`.json`,data);
   }
 
+  // store login data
   // login(data:User) : Observable<User>{
   //   return this._http.post<User>( environment.api_url + Constant.API_END_POINT.LOGIN_HOSPITAL + `.json`, data );
   // }
+
+  // check if user is already registered
   checkForRegister(data : string) : Observable<boolean>{
       return this._http.get<boolean>( environment.api_url + Constant.API_END_POINT.ADD_NEW_HOSPITAL + '.json')
        .pipe( map((response: any) => {
-         // convert response object into array
          let val = false;
          for (let key in response) {
              if (response.hasOwnProperty(key) && response[key].hospitalName === data) {
@@ -34,6 +37,8 @@ export class HospitalService {
          })
        );
   }
+
+  //  get data if hosiptal name and password in correct 
   getData(name: string, password:string){
     return this._http.get(environment.api_url + Constant.API_END_POINT.ADD_NEW_HOSPITAL + '.json').pipe(
         map((response:any) => {

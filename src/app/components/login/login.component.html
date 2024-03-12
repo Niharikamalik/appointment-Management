@@ -1,12 +1,15 @@
 <mat-icon class="mat-18" (click)="closeDialog()">close</mat-icon>
 <div >
+  <!-- login form -->
   <h2 mat-dialog-title>Login Form</h2>
   <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
     <div mat-dialog-content class="login-form">
+      <!-- hospital name -->
       <mat-form-field appearance="outline">
         <mat-label>Hospital Name </mat-label>
         <input type="text" matInput placeholder="Ex.ABC" formControlName="hospitalName" />
       </mat-form-field>
+      <!-- password -->
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
         <input type="password" matInput formControlName="password">

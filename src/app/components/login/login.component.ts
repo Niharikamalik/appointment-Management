@@ -36,6 +36,8 @@ export class LoginComponent implements OnInit {
     //   },
     //   error:(err)=>{alert('enter correct email id password')}
     // })
+
+    // store login input to local storage
     localStorage.setItem('Login', JSON.stringify(this.loginForm.value));
     this.dialogRef.close([{ ...this.loginForm.value}]);
   }
