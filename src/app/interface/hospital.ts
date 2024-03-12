@@ -8,4 +8,5 @@ export interface hospital {
   OwnerEmail: string;
   city: string;
   password: string;
+  id?: string;
 }

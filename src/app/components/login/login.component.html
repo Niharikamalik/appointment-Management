@@ -1,0 +1,20 @@
+<mat-icon class="mat-18" (click)="closeDialog()">close</mat-icon>
+<div >
+  <h2 mat-dialog-title>Login Form</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="login-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Hospital Name </mat-label>
+        <input type="text" matInput placeholder="Ex.ABC" formControlName="hospitalName" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+      <button mat-raised-button color="warn" type="button" (click)="closeDialog()"> cancel</button>
+    </div>
+  </form>
+</div>
