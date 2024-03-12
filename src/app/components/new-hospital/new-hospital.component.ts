@@ -11,6 +11,7 @@ export class NewHospitalComponent {
 
   hospitalRegisteration: FormGroup;
   submitted: boolean = false;
+  result: any;
   constructor(
     private _hospitalService : HospitalService,
     public fb: FormBuilder,
@@ -28,15 +29,29 @@ export class NewHospitalComponent {
        password:'',
      });
   }
-  OnSubmit() {
-    if (this.hospitalRegisteration.valid) {
-      this._hospitalService.addHospital(this.hospitalRegisteration.value).subscribe({
-        next: (res) => {
-          console.log('submitted successfully', res)
+  // on form submit
+  val: boolean = false;
+OnSubmit() {
+
+  if (this.hospitalRegisteration.valid ) {
+      this._hospitalService.checkForRegister(this.hospitalRegisteration.value.hospitalName).subscribe(result => {
+        if(result) {
+          alert('already register')
           this.hospitalRegisteration.reset()
-          this.submitted = true
-       }
-     })
+        }
+        else {
+          this._hospitalService.addHospital(this.hospitalRegisteration.value).subscribe({
+            next: (res) => {
+              console.log('submitted successfully', res)
+              this.hospitalRegisteration.reset()
+              this.submitted = true
+           }
+         })
+        }
+      })
+      // console.log(this.hospitalRegisteration.value?.hospitalName)
+      // val = Boolean(val)
+      console.log(this.val)
     }
     else {
       console.log('invalid')
