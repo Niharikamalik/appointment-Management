@@ -4,12 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AppointmentListComponent } from './pages/appointment-list/appointment-list.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AppointmentListComponent } from './components/pages/appointment-list/appointment-list.component';
+import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { HospitalListComponent } from './components/hospital-list/hospital-list.component';
 import { NewHospitalComponent } from './components/new-hospital/new-hospital.component';
-import { PatientListComponent } from './pages/patient-list/patient-list.component';
+import { PatientListComponent } from './components/pages/patient-list/patient-list.component';
 import { RouterOutlet } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -23,6 +23,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LoginComponent } from './components/login/login.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { NewAppointmentComponent } from './components/pages/appointment-list/new-appointment/new-appointment.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDividerModule } from '@angular/material/divider'
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +37,7 @@ import { MatIconModule } from '@angular/material/icon';
     NewHospitalComponent,
     PatientListComponent,
     LoginComponent,
+    NewAppointmentComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +55,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatDialogModule,
     MatIconModule,
     FormsModule,
+    MatCardModule,
+    MatRadioModule,
+    MatDividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

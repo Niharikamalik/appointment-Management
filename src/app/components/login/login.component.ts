@@ -29,14 +29,6 @@ export class LoginComponent implements OnInit {
   }
   onFormSubmit() {
     console.log(this.loginForm.value)
-    // this.hospitalService.login(this.loginForm.value).subscribe({
-    //   next: (res: User) => {
-    //     localStorage.setItem('Login' , JSON.stringify(this.loginForm.value))
-    //     this.dialogRef.close([{ ...this.loginForm.value, ...res }])
-    //   },
-    //   error:(err)=>{alert('enter correct email id password')}
-    // })
-
     // store login input to local storage
     localStorage.setItem('Login', JSON.stringify(this.loginForm.value));
     this.dialogRef.close([{ ...this.loginForm.value}]);

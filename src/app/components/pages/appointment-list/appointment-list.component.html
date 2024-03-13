@@ -1,0 +1,33 @@
+<mat-toolbar color="primary">
+  <div>
+    <span>Appointment</span>
+  </div>
+  <div>
+    <div class="row">
+      <button mat-raised-button routerLink="/home"> Home </button>
+      <button mat-raised-button color="warn" (click)="openApptDailog()"> Add-Appointment </button>
+    </div>
+  </div>
+</mat-toolbar>
+<div class="appointment-container">
+  <div *ngFor="let appt of apptDetails let i = index">
+    <mat-card >
+      <mat-card-header>
+        <mat-card-title>Appointment {{i + 1}}</mat-card-title>
+        <mat-card-subtitle>{{hospitalName | uppercase}} hospital </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content (click)="details(appt.id)">
+        <mat-icon matCardAvatar class="mat-18 person">person</mat-icon>
+        <p>Name : {{appt.patientName}}</p>
+        <p>city : {{appt.city}}</p>
+        <p>date : {{appt.appointmentDate | date}}</p>
+        <p> Problem : {{appt.problem}} </p>
+      </mat-card-content>
+      <mat-card-footer>
+        <mat-icon class="mat-18" color="primary" (click)="editAppt(appt.id)" >edit</mat-icon>
+        <mat-icon class="mat-18" color="warn" (click)="deleteAppointment(appt.id)">delete</mat-icon>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+
+</div>

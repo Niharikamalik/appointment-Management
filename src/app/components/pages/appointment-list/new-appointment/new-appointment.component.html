@@ -1,0 +1,65 @@
+<h2 mat-dialog-title>Create Appointment</h2>
+<form [formGroup]="newAppointment" (ngSubmit)="onAppointmentSubmit()">
+  <div mat-dialog-content class="login-form">
+    <div class="row">
+
+      <!-- patient name -->
+      <mat-form-field appearance="outline">
+        <mat-label>Patient Name</mat-label>
+        <input type="text" matInput formControlName="patientName" required>
+      </mat-form-field>
+
+      <!-- mobile no. -->
+      <mat-form-field appearance="outline">
+        <mat-label>Mobile No. </mat-label>
+        <input type="number" matInput minlength="13" formControlName="contact" required>
+      </mat-form-field>
+
+    </div>
+    <div class="row">
+
+      <!-- age -->
+      <mat-form-field appearance="outline">
+        <mat-label>Age</mat-label>
+        <input type="number" matInput formControlName="age">
+      </mat-form-field>
+
+      <!--city -->
+      <mat-form-field appearance="outline">
+        <mat-label>city</mat-label>
+        <input type="text" matInput formControlName="city">
+      </mat-form-field>
+
+    </div>
+    <div class="row">
+      <!-- gender -->
+        <mat-radio-group aria-label="Select an option" formControlName="gender">
+          <mat-label>Gender </mat-label>
+          <mat-radio-button value="male"> Male </mat-radio-button>
+          <mat-radio-button value="female"> Female </mat-radio-button>
+        </mat-radio-group>
+    </div>
+
+    <div class="row">
+      <!-- appointment date -->
+      <mat-form-field appearance="outline">
+        <mat-label>Appointment Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="appointmentDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <!-- Problem -->
+      <mat-form-field appearance= "outline" >
+        <mat-label>Problem</mat-label>
+        <input type="text" formControlName="problem" matInput>
+      </mat-form-field>
+
+    </div>
+  </div>
+  <div class="row">
+    <button mat-raised-button color="primary" type="submit" [disabled]="newAppointment.invalid">Submit</button>
+    <button mat-raised-button color="warn" type="button" (click)="closeDialog()"> cancel</button>
+  </div>
+</form>

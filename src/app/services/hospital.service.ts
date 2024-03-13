@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Constant } from '../constant/constant';
 import { Observable, filter, map } from 'rxjs';
 import { User } from '../interface/login';
+import { appointment } from '../interface/appointment';
 
 
 @Injectable({
@@ -38,7 +39,7 @@ export class HospitalService {
        );
   }
 
-  //  get data if hosiptal name and password in correct 
+  //  get data if hosiptal name and password in correct
   getData(name: string, password:string){
     return this._http.get(environment.api_url + Constant.API_END_POINT.ADD_NEW_HOSPITAL + '.json').pipe(
         map((response:any) => {

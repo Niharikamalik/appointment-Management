@@ -44,6 +44,10 @@ OnSubmit() {
         else {
           this._hospitalService.addHospital(this.hospitalRegisteration.value).subscribe({
             next: (res) => {
+              localStorage.setItem('Login', JSON.stringify({
+                hospitalName: this.hospitalRegisteration.value.hospitalName,
+                password: this.hospitalRegisteration.value.password
+              }));
               console.log('submitted successfully', res)
               this.hospitalRegisteration.reset()
               this.submitted = true
