@@ -1,4 +1,6 @@
+import { appointment } from './appointment';
 export interface hospital {
+  appointment: appointment;
   hospitalName: string;
   contactNo: number;
   hospitalEmail: string;

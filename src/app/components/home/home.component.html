@@ -1,8 +1,10 @@
+<!-- navbar -->
 <mat-toolbar>
   <span>Application</span>
   <button mat-raised-button (click)="openDialog()" *ngIf="!loggedIn">Login</button>
   <button mat-raised-button *ngIf="loggedIn" (click)="logOff()">Logout</button>
 </mat-toolbar>
+<!-- home container -->
 <div class="home-container">
   <div class="register-container">
     <div class="name">
@@ -10,10 +12,12 @@
       <h1>Management</h1>
     </div>
     <div class="registeration-form" *ngIf="!loggedIn">
+      <!-- registeration form -->
       <app-new-hospital></app-new-hospital>
     </div>
   </div>
 </div>
+<!-- pages toolbar  -->
 <mat-toolbar *ngIf="loggedIn">
   <span>{{userData[0].hospitalName}}</span>
   <div class="pages-button">
