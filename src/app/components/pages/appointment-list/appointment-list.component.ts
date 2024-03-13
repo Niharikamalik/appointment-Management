@@ -53,6 +53,8 @@ export class AppointmentListComponent implements OnInit {
       });
     });
   }
+
+  // get appointment details
   getAppointment() {
     this._apptService.getAppointment(this.hospitalId).subscribe({
       next: (response) => {
@@ -62,13 +64,13 @@ export class AppointmentListComponent implements OnInit {
       },
     });
   }
+
   // dialog for appointment details
   details(id: string) {
     console.log(id);
   }
 
   // delete appointment
-
   deleteAppointment(id: string) {
     this._apptService.deleteAppointment(this.hospitalId, id).subscribe({
       next: (res) => {
@@ -77,11 +79,12 @@ export class AppointmentListComponent implements OnInit {
     });
   }
 
+  // edit Appointment
   editAppt(id: string) {
     this._apptService.appointmentDetails(this.hospitalId, id)
       .pipe(
         switchMap((ApptDetails) => {
-          // Open dialog here and pass task data
+          // Open dialog here and pass appointment data
           return this._dialog
             .open(NewAppointmentComponent, {
               disableClose: true,
