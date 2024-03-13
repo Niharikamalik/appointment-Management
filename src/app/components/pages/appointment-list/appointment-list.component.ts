@@ -30,7 +30,7 @@ export class AppointmentListComponent implements OnInit {
           next: (res) => {
             this.hospitalId = res[0].id;
             this.hospitalName = res[0].hospitalName;
-            console.log(this.hospitalId);
+            // console.log(this.hospitalId);
             this.getAppointment();
           },
         });
@@ -58,9 +58,9 @@ export class AppointmentListComponent implements OnInit {
   getAppointment() {
     this._apptService.getAppointment(this.hospitalId).subscribe({
       next: (response) => {
-        console.log(response);
+        // console.log(response);
         this.apptDetails = response;
-        console.log(this.apptDetails);
+        // console.log(this.apptDetails);
       },
     });
   }
@@ -95,7 +95,7 @@ export class AppointmentListComponent implements OnInit {
       )
       .subscribe({
         next : (res)=>{
-          console.log(res);
+          // console.log(res);
           this.getAppointment()
         }
        });

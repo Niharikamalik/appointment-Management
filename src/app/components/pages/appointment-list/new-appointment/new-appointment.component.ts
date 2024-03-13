@@ -34,7 +34,7 @@ export class NewAppointmentComponent implements OnInit {
   ngOnInit(): void {
     if (this.data) {
       this.newAppointment.patchValue(this.data[0])
-      console.log(this.data.length)
+      // console.log(this.data.length)
     }
 
   }

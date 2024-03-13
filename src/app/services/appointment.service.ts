@@ -12,6 +12,7 @@ import { hospital } from '../interface/hospital';
 export class AppointmentService {
   constructor(private _http: HttpClient) {}
 
+  // add appointment
   addAppointment(data: appointment[], id: string) {
     return this._http.post(
       environment.api_url +
@@ -22,6 +23,8 @@ export class AppointmentService {
       data
     );
   }
+
+  // get all appointments of oarticular hospital
   getAppointment(id: string) {
     return this._http
       .get(
@@ -41,17 +44,19 @@ export class AppointmentService {
       );
   }
 
+  // delete appointment details
   deleteAppointment(hospitalId: string, ApptId: string) {
     return this._http.delete(
       `https://appointment-13143-default-rtdb.firebaseio.com/hospitals/${hospitalId}/appointment/${ApptId}.json`
     );
   }
 
+  // get appointment detail of particular appointment
   appointmentDetails(hospitalId: string, ApptId: string) {
-    console.log('update')
     return this._http.get(`https://appointment-13143-default-rtdb.firebaseio.com/hospitals/${hospitalId}/appointment/${ApptId}.json`);
   }
 
+  // update appointment details
   updateAppointment(hospitalId: string, apptId: string , data : appointment) {
     return this._http.put(`https://appointment-13143-default-rtdb.firebaseio.com/hospitals/${hospitalId}/appointment/${apptId}.json`,data);
   }
