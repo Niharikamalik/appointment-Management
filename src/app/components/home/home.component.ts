@@ -47,14 +47,14 @@ export class HomeComponent implements OnInit {
     });
     // store login form data
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('dialog response : ', result);
+      // console.log('dialog response : ', result);
       // retrieving hospital data from data base using Hospital service
       this.data.getData(result[0].hospitalName, result[0].password ).subscribe({
         next: (data) => {
           if (data.length != 0) {
             this.loggedIn = true
             this.userData = [...data]
-            console.log(this.userData);
+            // console.log(this.userData);
           }
           else {
             this.loggedIn = false;

@@ -20,7 +20,9 @@
         <mat-icon matCardAvatar class="mat-18 person">person</mat-icon>
         <p>Name : {{appt.patientName}}</p>
         <p>city : {{appt.city}}</p>
-        <p>date : {{appt.appointmentDate | date}}</p>
+        <p>date : {{appt.appointmentDate | date }}</p>
+        <p>date : {{appt.appointmentDate | dateFormat}}</p>
+
         <p> Problem : {{appt.problem}} </p>
       </mat-card-content>
       <mat-card-footer>

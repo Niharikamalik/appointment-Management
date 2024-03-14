@@ -15,7 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatNativeDateModule } from '@angular/material/core';
+import { DateAdapter, MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -27,6 +27,7 @@ import { MatCardModule } from '@angular/material/card';
 import { NewAppointmentComponent } from './components/pages/appointment-list/new-appointment/new-appointment.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDividerModule } from '@angular/material/divider'
+import { DateFormatPipe } from './pipe/date.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { MatDividerModule } from '@angular/material/divider'
     PatientListComponent,
     LoginComponent,
     NewAppointmentComponent,
+    DateFormatPipe
   ],
   imports: [
     BrowserModule,
