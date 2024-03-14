@@ -55,9 +55,6 @@ OnSubmit() {
          })
         }
       })
-      // console.log(this.hospitalRegisteration.value?.hospitalName)
-      // val = Boolean(val)
-      console.log(this.val)
     }
     else {
       console.log('invalid')
