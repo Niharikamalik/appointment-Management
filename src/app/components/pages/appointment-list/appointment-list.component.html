@@ -11,7 +11,7 @@
 </mat-toolbar>
 <div class="appointment-container">
   <div *ngFor="let appt of apptDetails let i = index">
-    <mat-card [ngStyle]="{'background-color' : (appt.appointmentDate| dateFormat) === 'Today'? '#8bebb05e' : '#f5f56a34'}" >
+    <mat-card [ngStyle]="{'background-color' : (appt.appointmentDate| dateFormat) === 'Today'? '#8bebb05e' : '#faa08963'}" >
       <mat-card-header>
         <mat-card-title>Appointment {{i + 1}}</mat-card-title>
         <mat-card-subtitle>{{hospitalName | uppercase}} hospital </mat-card-subtitle>
