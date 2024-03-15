@@ -1,4 +1,3 @@
-import { DatePipe } from '@angular/common';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
@@ -6,42 +5,28 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class DateFormatPipe implements PipeTransform {
   transform(value: Date): string {
-    const CurrentDay: Date = new Date();
-    const change: number = Math.floor(
-      (Date.parse(value.toString()) - Date.parse(CurrentDay.toString())) /
-        86400000
-    );
+   const currentDate = new Date();
+   // Set it to midnight to disregard time differences
+   currentDate.setHours(0, 0, 0, 0);
 
-    if (change === -1) {
-      return 'yesterday';
-    }
+   // Create date objects for yesterday, today, and tomorrow
+   const yesterday = new Date(currentDate);
+   yesterday.setDate(currentDate.getDate() - 1);
+   const tomorrow = new Date(currentDate);
+   tomorrow.setDate(currentDate.getDate() + 1);
 
-    if (change === 0) {
-      return 'today';
-    }
+   // Convert inputDate to midnight time
+   const inputDateMidnight = new Date(value);
+   inputDateMidnight.setHours(0, 0, 0, 0);
 
-    if (change === 1) {
-      return 'tomorrow';
-    }
-
-    const days = [
-      'Sunday',
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-    ];
-
-    const dayOfWeek: number = CurrentDay.getDay();
-
-    const givenDayofWeek: number = value.getDay();
-
-    if (givenDayofWeek > dayOfWeek && change < 7) {
-      return days[givenDayofWeek];
-    }
-
-    return value.toDateString();
+   if (inputDateMidnight.getTime() === yesterday.getTime()) {
+     return 'Yesterday';
+   } else if (inputDateMidnight.getTime() === currentDate.getTime()) {
+     return 'Today';
+   } else if (inputDateMidnight.getTime() === tomorrow.getTime()) {
+     return 'Tomorrow';
+   } else {
+     return 'Other';
+   }
   }
 }

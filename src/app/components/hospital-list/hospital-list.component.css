@@ -1,0 +1,21 @@
+.hospital-list{
+  width: 100%;
+  text-align: center;
+  margin: 20px;
+  position: relative;
+}
+.mat-elevation-z8{
+  width: 80%;
+}
+.example-table-container {
+  position: relative;
+  min-height: 200px;
+  max-height: 400px;
+  overflow: auto;
+  text-align: justify;
+}
+
+table {
+  width: 100%;
+  margin: 0 auto;
+}

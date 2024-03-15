@@ -9,27 +9,37 @@
     </div>
   </div>
 </mat-toolbar>
+<div class="filter">
+  <mat-form-field appearance="outline">
+    <mat-label>Filter</mat-label>
+    <mat-select name='filter' [(ngModel)]="filterby">
+      <mat-option value="all">All</mat-option>
+      <mat-option value="today">Today</mat-option>
+      <mat-option value="yesterday">Yesterday</mat-option>
+      <mat-option value="tomorrow">Tomorrow</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <h1>{{(filterby.slice(0,1) | uppercase) + filterby.slice(1) + ' Appointments' }}</h1>
+</div>'
 <div class="appointment-container">
-  <div *ngFor="let appt of apptDetails let i = index">
-    <mat-card >
-      <mat-card-header>
-        <mat-card-title>Appointment {{i + 1}}</mat-card-title>
-        <mat-card-subtitle>{{hospitalName | uppercase}} hospital </mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content (click)="details(appt.id)">
-        <mat-icon matCardAvatar class="mat-18 person">person</mat-icon>
-        <p>Name : {{appt.patientName}}</p>
-        <p>city : {{appt.city}}</p>
-        <p>date : {{appt.appointmentDate | date }}</p>
-        <p>date : {{appt.appointmentDate | dateFormat}}</p>
-
-        <p> Problem : {{appt.problem}} </p>
-      </mat-card-content>
-      <mat-card-footer>
-        <mat-icon class="mat-18" color="primary" (click)="editAppt(appt.id)" >edit</mat-icon>
-        <mat-icon class="mat-18" color="warn" (click)="deleteAppointment(appt.id)">delete</mat-icon>
-      </mat-card-footer>
-    </mat-card>
-  </div>
-
+  <div *ngFor="let appt of apptDetails | filterAppt: filterby let i = index">
+      <mat-card [ngStyle]="{'background-color' : (appt.appointmentDate| dateFormat) === 'Today'? '#8bebb05e' : (appt.appointmentDate| dateFormat) === 'Yesterday'? '#faa08963': (appt.appointmentDate| dateFormat) === 'Tomorrow'? '#f3eab68a': '#6b6b6734'}" >
+        <h3> {{(appt.appointmentDate | dateFormat) + "'s appointment"}}</h3>
+        <mat-card-header>
+          <mat-card-title>Appointment {{i + 1}}</mat-card-title>
+          <mat-card-subtitle>{{hospitalName | uppercase}} hospital </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content (click)="details(appt.id)">
+          <mat-icon matCardAvatar class="mat-18 person">person</mat-icon>
+          <p>Name : {{(appt.patientName.slice(0,1) | uppercase) + (appt.patientName.slice(1))}}</p>
+          <p>city : {{appt.city}}</p>
+          <p>date : {{appt.appointmentDate | date }}</p>
+          <p> Problem : {{appt.problem}} </p>
+        </mat-card-content>
+        <mat-card-footer>
+          <mat-icon class="mat-18" color="primary" (click)="editAppt(appt.id)">edit</mat-icon>
+          <mat-icon class="mat-18" color="warn" (click)="deleteAppointment(appt.id)">delete</mat-icon>
+        </mat-card-footer>
+      </mat-card>
+    </div>
 </div>

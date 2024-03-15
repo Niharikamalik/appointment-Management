@@ -1,0 +1,13 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button mat-icon-button (click)="toggleSideBar()"> <mat-icon class="mat-18">menu</mat-icon></button>
+      <ul style="list-style: none;">
+        <li>
+          <button mat-raised-button [matMenuTriggerFor]="menu" ><mat-icon class="mat-18">person</mat-icon> {{hospitalName}}<mat-icon class="mat-18">keyboard_arrow_down</mat-icon></button>
+          <mat-menu #menu = 'matMenu'>
+            <button mat-menu-item (click)="logOff()"> <mat-icon class="mat-18">exit_to_app</mat-icon> Logout </button>
+          </mat-menu>
+        </li>
+      </ul>
+  </mat-toolbar-row>
+</mat-toolbar>

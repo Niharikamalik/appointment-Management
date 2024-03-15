@@ -19,6 +19,23 @@ export class HospitalService {
     return this._http.post<hospital>(environment.api_url + Constant.API_END_POINT.ADD_NEW_HOSPITAL+`.json`,data);
   }
 
+  // getall hopital data
+  getAllHospital() {
+    return this._http.get(environment.api_url + Constant.API_END_POINT.ADD_NEW_HOSPITAL + '.json').pipe(
+       map((response:any) => {
+         let task = [];
+         // convert response object into array
+         for (let key in response) {
+           if (response.hasOwnProperty(key) ) {
+               task.push({ ...response[key], id: key });
+           }
+         }
+         return task;
+       }),
+     );
+  }
+
+
   // store login data
   // login(data:User) : Observable<User>{
   //   return this._http.post<User>( environment.api_url + Constant.API_END_POINT.LOGIN_HOSPITAL + `.json`, data );

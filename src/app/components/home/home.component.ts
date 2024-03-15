@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
           if (data.length != 0) {
             this.loggedIn = true
             this.userData = [...data]
-            // console.log(this.userData);
+            console.log(this.userData);
           }
           else {
             this.loggedIn = false;
