@@ -37,7 +37,4 @@ mat-card-header, tr
 {
   justify-content: center;
 }
-ng-container , td , th, tr {
-  padding: 0%;
-  margin: 0;
-}
+
