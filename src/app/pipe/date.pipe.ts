@@ -1,4 +1,3 @@
-import { DatePipe } from '@angular/common';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
@@ -27,7 +26,7 @@ export class DateFormatPipe implements PipeTransform {
    } else if (inputDateMidnight.getTime() === tomorrow.getTime()) {
      return 'Tomorrow';
    } else {
-     return 'Other'; 
+     return 'Other';
    }
   }
 }

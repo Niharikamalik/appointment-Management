@@ -26,5 +26,7 @@
     <button mat-raised-button routerLink="/dashboard" [routerLinkActive]="'active'">dashboard</button>
   </div>
 </mat-toolbar>
-
+<div>
+  <app-hospital-list *ngIf="!loggedIn"></app-hospital-list>
+</div>
 

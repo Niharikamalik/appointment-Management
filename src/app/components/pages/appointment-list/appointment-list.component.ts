@@ -5,8 +5,12 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NewAppointmentComponent } from './new-appointment/new-appointment.component';
 import { AppointmentService } from '../../../services/appointment.service';
 import { appointment } from 'src/app/interface/appointment';
-import { switchMap } from 'rxjs';
+import { filter, switchMap } from 'rxjs';
 
+interface day {
+  value: string;
+  viewValue : string;
+}
 @Component({
   selector: 'app-appointment-list',
   templateUrl: './appointment-list.component.html',
@@ -16,6 +20,9 @@ export class AppointmentListComponent implements OnInit {
   hospitalId: string;
   hospitalName: string;
   apptDetails: appointment[];
+  filterby: string = 'all';
+  
+
   constructor(
     private _hospitalService: HospitalService,
     private _apptService: AppointmentService,
@@ -81,23 +88,24 @@ export class AppointmentListComponent implements OnInit {
 
   // edit Appointment
   editAppt(id: string) {
-    this._apptService.appointmentDetails(this.hospitalId, id)
+    this._apptService
+      .appointmentDetails(this.hospitalId, id)
       .pipe(
         switchMap((ApptDetails) => {
           // Open dialog here and pass appointment data
           return this._dialog
             .open(NewAppointmentComponent, {
               disableClose: true,
-              data: [ApptDetails,this.hospitalId,id] ,
+              data: [ApptDetails, this.hospitalId, id],
             })
             .afterClosed();
         })
       )
       .subscribe({
-        next : (res)=>{
+        next: (res) => {
           // console.log(res);
-          this.getAppointment()
-        }
-       });
+          this.getAppointment();
+        },
+      });
   }
 }

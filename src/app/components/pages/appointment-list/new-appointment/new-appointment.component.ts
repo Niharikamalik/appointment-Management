@@ -13,8 +13,10 @@ import { HospitalService } from 'src/app/services/hospital.service';
 export class NewAppointmentComponent implements OnInit {
   hospitalId: string = '';
   newAppointment: FormGroup;
+  currentDate = new Date()
+  startDate = new Date(this.currentDate);
   constructor(
-    private _dialogRef : MatDialogRef<NewAppointmentComponent>,
+    private _dialogRef: MatDialogRef<NewAppointmentComponent>,
     private _hospitalService: HospitalService,
     private _appointmentService: AppointmentService,
     @Inject(MAT_DIALOG_DATA) public data,
@@ -23,38 +25,41 @@ export class NewAppointmentComponent implements OnInit {
     this.newAppointment = this.fb.group({
       patientName: '',
       contact: 0,
-      age:  0,
+      age: 0,
       gender: '',
       appointmentDate: new Date(),
       problem: '',
       city: '',
     });
-    }
+  }
 
   ngOnInit(): void {
     if (this.data) {
-      this.newAppointment.patchValue(this.data[0])
+      this.newAppointment.patchValue(this.data[0]);
       // console.log(this.data.length)
     }
-
   }
 
   onAppointmentSubmit() {
     if (this.newAppointment.valid) {
       if (this.data && this.data.length != 0) {
-        this._appointmentService.updateAppointment(this.data[1], this.data[2], this.newAppointment.value)
+        this._appointmentService
+          .updateAppointment(
+            this.data[1],
+            this.data[2],
+            this.newAppointment.value
+          )
           .subscribe({
             next: (res) => {
-              this._dialogRef.close()
-            }
-        })
-      }
-      else {
-        this._dialogRef.close({...this.newAppointment.value})
+              this._dialogRef.close();
+            },
+          });
+      } else {
+        this._dialogRef.close({ ...this.newAppointment.value });
       }
     }
   }
   closeDialog() {
-    this._dialogRef.close()
-  };
+    this._dialogRef.close();
+  }
 }

@@ -1,1 +1,10 @@
-<p>dashboard works!</p>
+<mat-drawer-container>
+  <mat-drawer mode ="side" [opened]="sidebarOpen">
+    <app-side-nav></app-side-nav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-header (ForToggleSidebar)="sidebarToggler()"></app-header>
+    <app-dashboard-container></app-dashboard-container>
+  </mat-drawer-content>
+</mat-drawer-container>
+<!-- <app-side-nav></app-side-nav> -->

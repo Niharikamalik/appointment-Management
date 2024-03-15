@@ -28,6 +28,17 @@ import { NewAppointmentComponent } from './components/pages/appointment-list/new
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDividerModule } from '@angular/material/divider'
 import { DateFormatPipe } from './pipe/date.pipe';
+import { MatSelectModule } from '@angular/material/select';
+import { FilterAppt } from './pipe/filterAppt.pipe';
+import { MatTableModule } from '@angular/material/table';
+import { HeaderComponent } from './components/pages/dashboard/header/header.component';
+import { SideNavComponent } from './components/pages/dashboard/side-nav/side-nav.component';
+import { DashboardContainerComponent } from './components/pages/dashboard/dashboard-container/dashboard-container.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +50,11 @@ import { DateFormatPipe } from './pipe/date.pipe';
     PatientListComponent,
     LoginComponent,
     NewAppointmentComponent,
-    DateFormatPipe
+    DateFormatPipe,
+    FilterAppt,
+    HeaderComponent,
+    SideNavComponent,
+    DashboardContainerComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,8 +75,14 @@ import { DateFormatPipe } from './pipe/date.pipe';
     MatCardModule,
     MatRadioModule,
     MatDividerModule,
+    MatSelectModule,
+    MatTableModule,
+    MatSidenavModule,
+    MatMenuModule,
+    MatListModule,
+    MatPaginatorModule
   ],
-  providers: [],
+  providers: [DateFormatPipe,FilterAppt],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
