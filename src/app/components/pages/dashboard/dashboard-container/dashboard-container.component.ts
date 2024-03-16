@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { appointment } from 'src/app/interface/appointment';
 import { AppointmentService } from 'src/app/services/appointment.service';
 import { HospitalService } from 'src/app/services/hospital.service';
@@ -6,6 +6,8 @@ import { DateFormatPipe } from '../../../../pipe/date.pipe';
 import { hospital } from '../../../../interface/hospital';
 import { FilterAppt } from 'src/app/pipe/filterAppt.pipe';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { DataSource } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-dashboard-container',
@@ -17,11 +19,12 @@ export class DashboardContainerComponent implements OnInit {
   hospitalName: string;
   hospitalId: string;
   apptData: appointment[] = [];
+  dataSource: MatTableDataSource<appointment>;
   todayAppt = [];
   yesterdayAppt: any[] = [];
   otherAppt: any[] = [];
   tomorrowAppt: any[] = [];
-  currentDate : Date = new Date
+  currentDate: Date = new Date();
 
   displayedColumns: string[] = [
     'id',
@@ -37,10 +40,12 @@ export class DashboardContainerComponent implements OnInit {
     private _hospitalService: HospitalService,
     private _apptService: AppointmentService,
     private _dateFormat: DateFormatPipe,
-    private _filterAppt: FilterAppt
-  ) { }
+    private _filterAppt: FilterAppt,
+  ) {
 
+  }
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   ngOnInit(): void {
     let loggedData = localStorage.getItem('Login');
     if (loggedData != null) {
@@ -55,16 +60,18 @@ export class DashboardContainerComponent implements OnInit {
               next: (res) => {
                 this.apptData = res;
                 this.todayAppt = this._filterAppt.transform(res, 'today');
-                this.yesterdayAppt = this._filterAppt.transform(res,'yesterday');
+                this.yesterdayAppt = this._filterAppt.transform(
+                  res,
+                  'yesterday'
+                );
                 this.tomorrowAppt = this._filterAppt.transform(res, 'tomorrow');
-                console.log(this.apptData)
+                console.log(this.apptData);
+                this.dataSource = new MatTableDataSource(this.apptData);
+                this.dataSource.paginator = this.paginator;
               },
-
             });
           },
         });
     }
   }
-
-  data(hospitalId: string) {}
 }

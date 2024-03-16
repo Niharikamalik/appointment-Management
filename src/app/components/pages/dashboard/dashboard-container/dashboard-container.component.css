@@ -1,43 +1,62 @@
-.appointment-details{
+.appointment-details {
   width: fit-content;
   padding: 1rem;
   text-align: center;
 }
-h1{
+
+h1 {
   color: rgba(34, 68, 219, 0.822);
 }
-.page{
+
+.page {
   width: 100%;
   justify-content: center;
 }
-.card{
+
+.card {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
-  /* gap: 0.5rem; */
-  margin: 0 auto
+  margin: 20px auto;
 }
-.table-card{
+
+.table-card {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.patient-Details {
   width: 100%;
   margin: 0 auto;
 }
-.patient-Details{
-  width: 100%;
-  margin: 0 auto;
-}
+
 .mat-elevation-z8 {
   width: 100%;
   padding: 10px;
 }
+
 td,
 th {
   width: fit-content;
 }
-mat-card-header, tr
-{
+
+mat-card-header{
+  font-size: 1em;
   justify-content: center;
 }
-ng-container , td , th, tr {
-  padding: 0%;
-  margin: 0;
+
+.mat-header-row {
+  background-color: rgb(7, 34, 122);
+}
+
+.mat-header-cell {
+  color: aliceblue;
+  font-size: 1em;
+}
+
+.mat-cell
+{
+  background-color: rgba(7, 34, 122, 0.144);
+  color: rgb(5, 5, 5);
 }
