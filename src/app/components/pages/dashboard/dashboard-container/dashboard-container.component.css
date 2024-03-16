@@ -45,18 +45,3 @@ mat-card-header{
   font-size: 1em;
   justify-content: center;
 }
-
-.mat-header-row {
-  background-color: rgb(7, 34, 122);
-}
-
-.mat-header-cell {
-  color: aliceblue;
-  font-size: 1em;
-}
-
-.mat-cell
-{
-  background-color: rgba(7, 34, 122, 0.144);
-  color: rgb(5, 5, 5);
-}
