@@ -1,15 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 html, body { height: 100%; width: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;  font-size: 2rem;}
 .row {
   display: flex;
   gap: 1rem;
   width: 100%;
   margin-bottom:5px ;
+  /* flex-wrap: nowrap; */
 }
 mat-toolbar {
   justify-content: space-between;
   background-color: rgb(132, 172, 245);
+  width: 100%;
 }
 form {
   background-color: rgba(240, 248, 255, 0.322);

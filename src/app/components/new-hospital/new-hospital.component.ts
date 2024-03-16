@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Route, Router } from '@angular/router';
 import { HospitalService } from 'src/app/services/hospital.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class NewHospitalComponent {
   submitted: boolean = false;
   result: any;
   constructor(
-    private _hospitalService : HospitalService,
+    private _hospitalService: HospitalService,
+    private router: Router,
     public fb: FormBuilder,
   ) {
      this.hospitalRegisteration = this.fb.group({
@@ -49,6 +51,7 @@ OnSubmit() {
                 password: this.hospitalRegisteration.value.password
               }));
               console.log('submitted successfully', res)
+              this.router.navigateByUrl('/home')
               this.hospitalRegisteration.reset()
               this.submitted = true
            }
